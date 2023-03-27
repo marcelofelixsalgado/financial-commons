@@ -20,6 +20,9 @@ type ConfigType struct {
 	DatabaseConnectionServerPort    int    `env:"DATABASE_SERVER_PORT" default:"3306"`
 	DatabaseName                    string `env:"DATABASE_NAME"`
 
+	// HTTP Port to expose the API
+	ApiHttpPort int `env:"API_PORT"`
+
 	// Key used to sign the token
 	SecretKey []byte `env:"SECRET_KEY"`
 
