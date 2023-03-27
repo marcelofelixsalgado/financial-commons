@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/marcelofelixsalgado/financial-commons/pkg/settings"
+	"github.com/marcelofelixsalgado/financial-commons/settings"
 )
 
 func CreateToken(userId string, tenantId string) (string, error) {

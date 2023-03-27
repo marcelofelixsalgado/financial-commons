@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/marcelofelixsalgado/financial-commons/pkg/settings"
+	"github.com/marcelofelixsalgado/financial-commons/settings"
 
 	"github.com/labstack/echo/v4"
 
