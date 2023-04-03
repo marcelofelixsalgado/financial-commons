@@ -1,12 +1,12 @@
 package middlewares
 
 import (
+	"github.com/marcelofelixsalgado/financial-commons/api/responses"
+	"github.com/marcelofelixsalgado/financial-commons/api/responses/faults"
 	"github.com/marcelofelixsalgado/financial-commons/pkg/commons/logger"
 
 	"github.com/labstack/echo/v4"
 	"github.com/marcelofelixsalgado/financial-commons/pkg/auth"
-	"github.com/marcelofelixsalgado/financial-commons/pkg/responses"
-	"github.com/marcelofelixsalgado/financial-commons/pkg/responses/faults"
 )
 
 func Authenticate(next echo.HandlerFunc) echo.HandlerFunc {

@@ -5,8 +5,8 @@ import (
 	"reflect"
 	"testing"
 
-	. "github.com/marcelofelixsalgado/financial-commons/pkg/responses"
-	"github.com/marcelofelixsalgado/financial-commons/pkg/responses/faults"
+	. "github.com/marcelofelixsalgado/financial-commons/api/responses"
+	"github.com/marcelofelixsalgado/financial-commons/api/responses/faults"
 )
 
 const fieldDoesNotSupportDecimals = "Field value does not support decimals"

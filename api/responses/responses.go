@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/marcelofelixsalgado/financial-commons/api/responses/faults"
 	"github.com/marcelofelixsalgado/financial-commons/pkg/commons/logger"
-	"github.com/marcelofelixsalgado/financial-commons/pkg/responses/faults"
 	"github.com/marcelofelixsalgado/financial-commons/pkg/usecase/status"
 )
 
@@ -53,6 +53,15 @@ func (responseMessage *ResponseMessage) GetMessage() ResponseMessage {
 		Details:        responseMessage.Details,
 	}
 }
+
+// func (responseMessage *ResponseMessage) getJsonMessage() ([]byte, error) {
+// 	message := responseMessage.getMessage()
+// 	messageJSON, err := json.Marshal(message)
+// 	if err != nil {
+// 		return nil, fmt.Errorf("error converting struct to response body: %s", err)
+// 	}
+// 	return messageJSON, nil
+// }
 
 func (responseMessage *ResponseMessage) AddMessageByErrorCode(errorCode faults.ErrorCode) *ResponseMessage {
 	referenceMessage, err := faults.FindByErrorCode(errorCode)
