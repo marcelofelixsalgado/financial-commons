@@ -19,6 +19,8 @@ func NewConnection() *sql.DB {
 		settings.Config.DatabaseConnectionServerPort,
 		settings.Config.DatabaseName)
 
+	logger.GetLogger().Debugf("connectionString: %s", connectionString)
+
 	db, err := sql.Open("mysql", connectionString)
 	if err != nil {
 		logger.GetLogger().Fatalf("Error trying to connect to database: %v", err)
