@@ -5,7 +5,7 @@ import (
 	"github.com/marcelofelixsalgado/financial-commons/api/context"
 )
 
-func SetupCustomContext(next echo.HandlerFunc) echo.HandlerFunc {
+func CustomContext(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		cc := &context.CustomContext{
 			Context: c,
