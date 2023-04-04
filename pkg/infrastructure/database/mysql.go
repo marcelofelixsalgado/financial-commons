@@ -19,10 +19,11 @@ func NewConnection() *sql.DB {
 		settings.Config.DatabaseConnectionServerPort,
 		settings.Config.DatabaseName)
 
-	logger.GetLogger().Debugf("connectionString: %s", connectionString)
+	fmt.Printf("connectionString: %s", connectionString)
 
 	db, err := sql.Open("mysql", connectionString)
 	if err != nil {
+		fmt.Println("Erro ao conectar no banco")
 		logger.GetLogger().Fatalf("Error trying to connect to database: %v", err)
 	}
 
@@ -33,6 +34,7 @@ func NewConnection() *sql.DB {
 	// Checks if connection is open
 	if err = db.Ping(); err != nil {
 		db.Close()
+		fmt.Println("Erro ao checar no banco")
 		logger.GetLogger().Fatalf("Error trying to check the database connection: %v", err)
 	}
 
