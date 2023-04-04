@@ -1,5 +1,13 @@
 package settings
 
+import (
+	"log"
+
+	"github.com/codingconcepts/env"
+	"github.com/joho/godotenv"
+	"github.com/sirupsen/logrus"
+)
+
 // Common ConfigType struct to resolve env vars
 type ConfigType struct {
 	AppName     string `env:"APP_NAME" default:"financial-api-response-module"`
@@ -27,3 +35,22 @@ type ConfigType struct {
 }
 
 var Config ConfigType
+
+// InitConfigs initializes the environment settings
+func Load() {
+	// load .env (if exists)
+	err := godotenv.Load()
+
+	if err != nil {
+		log.Println("No .env file found")
+	}
+
+	// bind env vars
+	if err := env.Set(&Config); err != nil {
+		log.Fatal(err)
+	}
+
+	if _, err := logrus.ParseLevel(Config.LogLevel); err != nil {
+		log.Fatal(err)
+	}
+}
