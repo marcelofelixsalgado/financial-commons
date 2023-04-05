@@ -83,6 +83,9 @@ const (
 	EntityWithSameKeyAlreadyExists Issue = "ENTITY_WITH_SAME_KEY_ALREADY_EXISTS"
 	MissingContentType             Issue = "MISSING_CONTENT_TYPE"
 	InvalidContentType             Issue = "INVALID_CONTENT_TYPE"
+
+	// Period API codes
+	OverlappingPeriodDates Issue = "OVERLAPPING_PERIOD_DATES"
 )
 
 var catalog = Catalog{
@@ -355,6 +358,14 @@ var catalog = Catalog{
 					LocationRequired: true,
 					FieldRequired:    true,
 					ValueRequired:    true,
+				},
+				{
+					Issue:            OverlappingPeriodDates,
+					Description:      "There was a date overlapping between the informed period and an existing one",
+					DescriptionArgs:  0,
+					LocationRequired: false,
+					FieldRequired:    false,
+					ValueRequired:    false,
 				},
 			},
 		},

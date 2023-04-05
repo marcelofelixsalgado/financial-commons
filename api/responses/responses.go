@@ -128,6 +128,8 @@ func (responseMessage *ResponseMessage) AddMessageByInternalStatus(internalStatu
 		responseMessage.AddMessageByIssue(faults.AuthenticationFailure, location, field, value)
 	case status.PasswordsDontMatch:
 		responseMessage.AddMessageByIssue(faults.PermissionDenied, "", "", "")
+	case status.OverlappingPeriodDates:
+		responseMessage.AddMessageByIssue(faults.OverlappingPeriodDates, location, field, value)
 	}
 	return responseMessage
 }
