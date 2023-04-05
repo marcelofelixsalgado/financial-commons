@@ -10,4 +10,5 @@ const (
 	LoginFailed                    InternalStatus = "LOGIN_FAILED"
 	EntityWithSameKeyAlreadyExists InternalStatus = "ENTITY_WITH_SAME_KEY_ALREADY_EXISTS"
 	PasswordsDontMatch             InternalStatus = "PASSWORDS_DONT_MATCH"
+	OverlappingPeriodDates         InternalStatus = "OVERLAPPING_PERIOD_DATES"
 )
