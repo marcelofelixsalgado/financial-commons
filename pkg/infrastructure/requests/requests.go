@@ -2,11 +2,9 @@ package requests
 
 import (
 	"bytes"
-	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"github.com/marcelofelixsalgado/financial-commons/api/context"
 )
 
 // Make a request to another backend (upstream)
@@ -19,9 +17,9 @@ func MakeUpstreamRequest(ctx echo.Context, method, url string, data []byte, auth
 
 	if authenticated {
 		// Get the access token from the cookie and set the upstream request header
-		customContext := ctx.(*context.CustomContext)
-		accessToken := fmt.Sprintf("Bearer %s", customContext.Get("client"))
-		request.Header.Add("Authorization", accessToken)
+		// customContext := ctx.(*context.CustomContext)
+		// accessToken := fmt.Sprintf("Bearer %s", customContext.Get("client"))
+		request.Header.Add("Authorization", ctx.Request().Header.Get("Authorization"))
 	}
 
 	client := &http.Client{}
