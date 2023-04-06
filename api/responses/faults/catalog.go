@@ -85,7 +85,8 @@ const (
 	InvalidContentType             Issue = "INVALID_CONTENT_TYPE"
 
 	// Period API codes
-	OverlappingPeriodDates Issue = "OVERLAPPING_PERIOD_DATES"
+	OverlappingPeriodDates      Issue = "OVERLAPPING_PERIOD_DATES"
+	DateDoesntBelongToAnyPeriod Issue = "DATE_DOESNT_BELONG_TO_ANY_PERIOD"
 )
 
 var catalog = Catalog{
@@ -366,6 +367,14 @@ var catalog = Catalog{
 					LocationRequired: false,
 					FieldRequired:    false,
 					ValueRequired:    false,
+				},
+				{
+					Issue:            DateDoesntBelongToAnyPeriod,
+					Description:      "This date doesn't belong to any existing period",
+					DescriptionArgs:  0,
+					LocationRequired: true,
+					FieldRequired:    true,
+					ValueRequired:    true,
 				},
 			},
 		},
