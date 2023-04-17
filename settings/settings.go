@@ -40,12 +40,12 @@ var Config ConfigType
 // InitConfigs initializes the environment settings
 func Load() {
 
-	log.Println("LOG - INICIO")
+	fmt.Errorf("LOG - INICIO")
 
 	// load .env (if exists)
 	err := godotenv.Load()
 
-	log.Println("ARQUIVO DE CONFIG CARREGADO")
+	fmt.Errorf("ARQUIVO DE CONFIG CARREGADO")
 
 	if err != nil {
 		log.Println("No .env file found")
@@ -53,14 +53,14 @@ func Load() {
 
 	// bind env vars
 	if err := env.Set(&Config); err != nil {
-		log.Println("DEU ERRO AQUI 1")
+		fmt.Errorf("DEU ERRO AQUI 1")
 		log.Fatal(err)
 	}
 
 	fmt.Println("Config.LogLevel:", Config.LogLevel)
 
 	if _, err := logrus.ParseLevel(Config.LogLevel); err != nil {
-		log.Println("DEU ERRO AQUI 1")
+		fmt.Errorf("DEU ERRO AQUI 1")
 		log.Fatal(err)
 	}
 }
