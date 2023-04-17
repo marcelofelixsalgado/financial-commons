@@ -40,11 +40,8 @@ func initLogger() {
 	entry = logrus.New()
 	hostname, _ = os.Hostname()
 
-	fmt.Println("LOOOGGG: initLogger: ", settings.Config.LogLevel)
-
 	logLevel, err := logrus.ParseLevel(settings.Config.LogLevel)
 	if err != nil {
-		fmt.Println("OPS DEU ERRO AQUI: ", err)
 		log.Fatal(err)
 	}
 
