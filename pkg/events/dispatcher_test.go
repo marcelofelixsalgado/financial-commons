@@ -50,7 +50,7 @@ type EventDispatcherTestSuite struct {
 }
 
 func (suite *EventDispatcherTestSuite) SetupTest() {
-	suite.eventDispatcher = NewMovementDispatcher()
+	suite.eventDispatcher = NewEventDispatcher()
 	suite.handler1 = TestEventHandler{ID: 1}
 	suite.handler2 = TestEventHandler{ID: 2}
 	suite.handler3 = TestEventHandler{ID: 3}

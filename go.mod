@@ -4,6 +4,7 @@ go 1.20
 
 require (
 	github.com/codingconcepts/env v0.0.0-20200821220118-a8fbf8d84482
+	github.com/confluentinc/confluent-kafka-go v1.9.2
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/go-sql-driver/mysql v1.7.0
 	github.com/joho/godotenv v1.5.1

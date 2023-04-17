@@ -19,7 +19,7 @@ type EventDispatcher struct {
 
 var ErrHandlerAlreadyRegistered = errors.New("handler already registered")
 
-func NewMovementDispatcher() *EventDispatcher {
+func NewEventDispatcher() *EventDispatcher {
 	return &EventDispatcher{
 		handlers: make(map[string][]IEventHandler),
 	}
