@@ -2,6 +2,7 @@ package settings
 
 import (
 	"log"
+	"os"
 
 	"github.com/codingconcepts/env"
 	"github.com/joho/godotenv"
@@ -40,10 +41,11 @@ var Config ConfigType
 func Load() {
 
 	// load .env (if exists)
-	err := godotenv.Load()
-	if err != nil {
-		log.Println("No .env file found")
-	}
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Println("No .env file found")
+	// }
+	loadDotEnv()
 
 	// bind env vars
 	if err := env.Set(&Config); err != nil {
@@ -52,5 +54,14 @@ func Load() {
 
 	if _, err := logrus.ParseLevel(Config.LogLevel); err != nil {
 		log.Fatal(err)
+	}
+}
+
+func loadDotEnv() {
+	if _, err := os.Stat(".env"); err == nil {
+		if err := godotenv.Load(); err != nil {
+			logrus.Fatal("Error loading .env file")
+		}
+		logrus.Println("Using .env file")
 	}
 }
