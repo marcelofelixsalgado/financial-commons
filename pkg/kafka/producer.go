@@ -3,6 +3,7 @@ package kafka
 import (
 	"encoding/json"
 
+	"github.com/confluentinc/confluent-kafka-go/kafka"
 	ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
 )
 
@@ -14,7 +15,7 @@ func NewKafkaProducer(configMap *ckafka.ConfigMap) *Producer {
 	return &Producer{ConfigMap: configMap}
 }
 
-func (p *Producer) Publish(msg interface{}, key []byte, topic string) error {
+func (p *Producer) Publish(msg interface{}, key []byte, topic string, deliveryChan chan kafka.Event) error {
 	producer, err := ckafka.NewProducer(p.ConfigMap)
 	if err != nil {
 		return err
@@ -30,9 +31,11 @@ func (p *Producer) Publish(msg interface{}, key []byte, topic string) error {
 		Value:          msgJson,
 		Key:            key,
 	}
-	err = producer.Produce(message, nil)
+	err = producer.Produce(message, deliveryChan)
 	if err != nil {
 		panic(err)
 	}
+
+	producer.Flush(1000)
 	return nil
 }
